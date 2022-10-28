@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="container-fluid my-5">
+	<div class="row">
+		<div class="col-lg-2 d-none  d-lg-block">
+		</div>
+		<div class="col-md-12 col-lg-8">
+			<div class="unity-container">
+
+			</div>
+		</div>
+		<div class=" col-lg-2 d-none d-lg-block">
+		</div>
+	</div>
+
+	<div class="gameslides mt-5">
+		<div class="d-flex justify-content-between text-white">
+			<h5>Similar Games</h5>
+		</div>
+		<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideGamesConfig"
+			(init)="slickInit()" (breakpoint)="breakpoint()" (afterChange)="afterChange()"
+			(beforeChange)="beforeChange()">
+			<div ngxSlickItem *ngFor="let slide of gameSlides" class="slide">
+				<img src="{{ slide.img }}" alt="" width="100%">
+			</div>
+		</ngx-slick-carousel>
+	</div>
+</div>
+<app-footer></app-footer>

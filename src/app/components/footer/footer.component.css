@@ -1,0 +1,25 @@
+.footer li a {
+	/* color: #8c8c8c */
+	color: #fff
+}
+
+.footer svg {
+	max-width: 100px;
+	margin: 0 10px;
+}
+
+.footer svg path {
+	fill: #8C897C;
+}
+
+.footer .payment-options div {
+	display: flex;
+	justify-content: center;
+	margin: 50px 0;
+}
+
+.footer p {
+	/* color: #585858; */
+	/* color: #2a2a2a; */
+	color: #ffffff;
+}

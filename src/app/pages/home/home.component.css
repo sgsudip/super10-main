@@ -1,0 +1,9 @@
+.mat-tab-label {
+    color: white !important;
+}
+p{
+    cursor: pointer;
+}
+.slick-slide {
+    width: 4%;
+}

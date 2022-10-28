@@ -1,0 +1,66 @@
+<nav class="navbar top-nav navbar-light bg-light" *ngIf="profileView=='false'">
+    <div class="container-fluid top-nav-bar">
+        <div class="top-nav-left">
+        <a>
+            <i class="fa-solid fa-envelope"></i>
+            <span class="emailtxt">sports@bet.com</span> 
+        </a>
+        <a class="phone-link">
+            <i class="fa-solid fa-phone"></i>
+            <span class="emailtxt">+12312313213</span> 
+        </a>
+    </div>
+      <form class="d-flex">
+        <button class="btn btn-outline-success" type="submit">Dashboard</button>
+      </form>
+    </div>
+  </nav>
+  <nav class="navbar menu-nav navbar-light bg-light">
+    <div class="container-fluid menu-nav-bar top-nav-bar">
+      <div (click)="home()">
+        <img src="../../../assets/logo.jfif" alt="logo" class="logo">
+      </div>
+      <div class="d-flex">
+        <div *ngIf="mobileWidth">
+          <i (click)="menuChange()"  class="fa-solid fa-bars"></i>
+        </div>
+        <ul class="menu-list" *ngIf="!mobileWidth">
+          <li class="menu-list-item" *ngFor="let item of menu">{{item.name}}</li>
+        </ul>
+        <div class="dropdown" *ngIf="!mobileWidth">
+    <img class="avatar dropbtn" src="https://super10.clickonsave.com/assets/images/avatar.png">
+    <div class="dropdown-content">
+    <a *ngFor="let item of profileMenu" (click)="changeView(item.name)" >{{item.name}}</a>
+  </div>
+  </div>
+  </div>
+    </div>
+  </nav>
+<div class="container profile-menu-box" *ngIf="menuBarClick">
+  <div class="container dashbtn">
+  <button class="btn btn-outline-success">Dashboard</button>
+  </div>
+  <div class="container d-flex contact-content">
+    <a>
+      <i class="fa-solid fa-envelope"></i>
+      <span class="emailtxt">sports@bet.com</span> 
+  </a>
+  <a class="phone-link">
+      <i class="fa-solid fa-phone"></i>
+      <span class="emailtxt">+12312313213</span> 
+  </a>
+    </div>
+    <div class="container mobile-view-blk">
+      <ul class="mobile-menu-lists">
+        <div  *ngFor="let item of menu" class="li-block d-flex justify-content-between" (click)="menuRoute(item.name)">
+          <li class="mob-menu-list">{{item.name}}
+          </li>
+          <i *ngIf="item.name=='User Menu'" class="fa-solid fa-angle-down"></i>
+        </div>
+      </ul>
+      <ul class="mobile-menu-lists text-center" *ngIf="userMenuClick">
+          <li (click)="menuRoute(item.name)" *ngFor="let item of profileMenu" class="mob-menu-list">{{item.name}}
+          </li>
+      </ul>
+    </div>
+</div>
