@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://localhost:8000',
+  base_url: 'http://localhost:8000/api',
   game_stage_url: "https://staging.slotegrator.com/api/index.php/v1"
 };
 
