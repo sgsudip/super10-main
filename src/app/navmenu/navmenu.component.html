@@ -28,7 +28,7 @@
           <li class="menu-list-item" *ngFor="let item of menu">{{item.name}}</li>
         </ul>
         <div class="dropdown" *ngIf="!mobileWidth">
-    <img class="avatar dropbtn" src="https://super10.clickonsave.com/assets/images/avatar.png">
+    <img class="avatar dropbtn" src="http://localhost:8000/assets/images/avatar.png">
     <div class="dropdown-content">
     <a *ngFor="let item of profileMenu" (click)="changeView(item.name)" >{{item.name}}</a>
   </div>

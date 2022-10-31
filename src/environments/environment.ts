@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'https://super10.clickonsave.com/api',
+  base_url: 'http://localhost:8000',
   game_stage_url: "https://staging.slotegrator.com/api/index.php/v1"
 };
 

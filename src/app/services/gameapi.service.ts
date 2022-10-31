@@ -74,7 +74,7 @@ export class GameapiService {
     // console.log( php_array.ksort(this.defaultHeaderObj))
     // const postData = httpBuildQuery(this.defaultHeaderObj);
     // this.gameHeaders = this.xSignGenerate(this.defaultHeaderObj);
-    this.http.post(`https://super10.clickonsave.com/api/gamesInit`, postData).subscribe((res:any)=>{
+    this.http.post(`http://localhost:8000/gamesInit`, postData).subscribe((res:any)=>{
 		this.gameUrl=res.message.language_data.url;
     this.router.navigateByUrl('/gameview')
     });

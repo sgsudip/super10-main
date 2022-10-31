@@ -26,7 +26,7 @@
 <div class="container-fluid my-5 careds">
   <div class="container reflink-container">
     <div class="d-flex reflink-block">
-    <input class="reflink" value="https://super10.clickonsave.com/register/user123" disabled>
+    <input class="reflink" value="http://localhost:8000/register/user123" disabled>
     <div class="copyblock">
       <i class="fa-solid fa-copy"></i>
     </div>
@@ -81,7 +81,7 @@
 <section *ngIf="currentMenu ==='profile'" class="profile-section">
   <div class="container profile-block"> 
  <div class="text-center profile-img-block">
-  <img class="profile-img" src="https://super10.clickonsave.com/assets/images/avatar.png">
+  <img class="profile-img" src="http://localhost:8000/assets/images/avatar.png">
   <p class="mt-2">Name: {{this.userData?.firstname}} {{this.userData?.lastname}}</p>
   <p >Username: {{this.userData?.username}}</p>
  </div>

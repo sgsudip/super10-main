@@ -14,7 +14,7 @@ var mt_rand=require('locutus/php/math/mt_rand');
 })
 export class AuthService {
 
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json',  'X-CSRF-TOKEN': '{{csrf_token()}}' });
   private gameHeaders: any
   private BASE_URL = environment.base_url;
   productSelectionSaved: boolean = true;
