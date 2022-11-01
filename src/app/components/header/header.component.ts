@@ -66,27 +66,42 @@ export class HeaderComponent implements OnInit {
 	home() {
 		this.router.navigateByUrl("/home")
 	}
+    // as the name suggests this function is used to execute the login process for the user, this controller is run by the login modal
 	loginUser() {
+        // show the spinner, when a response is received either, success or failure we havve to close the spinner
 		this.spinner.show();
+        // call the authservice controller
 		this.auth.login(this.signInForm.value).subscribe((res: any) => {
 			setTimeout(() => {
 				this.spinner.hide();
 			}, 2000);
+            // check response code and depending on that redirect to a specific page
 			if (res.code == 401 || res.code != 200) {
+                console.log("Here is the response object \n");
+                console.log(res);
+                console.log("no success response");
 				this.snackBar.open(`Please enter Valid data`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
 			}
 			else {
+                console.log("The response object \n");
+                console.log(res);
+                // get the accesstoken for the user
 				const token = res.data.access_token;
+                // close all modals
 				this.modalService.dismissAll();
-				localStorage.setItem("token", JSON.stringify(token))
+                // set the token in localstorage
+				localStorage.setItem("token", JSON.stringify(token));
+                // open the box, basically a notification alert type box, shallow men with insecure egos like to call it a snack or a toast or something that humans eat because you dont need to name things sensibly, you can just 
 				this.snackBar.open(`Logged In SuccessFully`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
-				this.router.navigateByUrl("/dashboard")
+                // navigate to the dashboard object if response is successfull
+				this.router.navigateByUrl("/dashboard");
 			}
 		}, err => {
 			this.spinner.hide();
 			this.modalService.dismissAll();
 			this.snackBar.open(`Please enter Valid data`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
 		})
+        // login function ended
 
 	}
 	registerUser() {
@@ -132,5 +147,4 @@ export class HeaderComponent implements OnInit {
 		localStorage.clear();
 		this.loginBool = true
 	}
-
 }
