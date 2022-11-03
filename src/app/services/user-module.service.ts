@@ -17,13 +17,9 @@ export class UserModuleService {
     }
    }
   getDashBoard() {
-
-    console.log("get dashboard");
-    console.log(this.BASE_URL);
-    // define the headers
-    this.headers=new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}`,'Location': 'http://super10.live/api/user/authorization'});
-
-    return this.http.get(`http://super10.live/api/user/dashboard`, { headers: this.headers });
+    console.log("get dashboard function");
+    this.headers=new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}`});
+    return this.http.get(`${this.BASE_URL}/user/dashboard`, { headers: this.headers });
   }
 
   getUser(){
