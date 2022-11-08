@@ -24,6 +24,7 @@ import { NavmenuComponent } from './navmenu/navmenu.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GameViewComponent } from './game-view/game-view.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 
 @NgModule({
 	declarations: [
@@ -40,7 +41,8 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
   DashboardComponent,
   NavmenuComponent,
   GameViewComponent,
-  PrivacyComponent
+  PrivacyComponent,
+  ReturnpolicyComponent
 	],
 	imports: [
 		BrowserModule,

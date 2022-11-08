@@ -8,6 +8,7 @@ import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.comp
 import { PromotionsComponent } from './pages/promotions/promotions.component';
 import { ViewallComponent } from './pages/viewall/viewall.component';
 import {PrivacyComponent} from './pages/privacy/privacy.component';
+import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 
 const routes: Routes = [{
 	path: '',
@@ -44,6 +45,10 @@ const routes: Routes = [{
 {
     path: 'privacy',
     component: PrivacyComponent
+},
+{
+    path: 'returnpolicy',
+    component: ReturnpolicyComponent
 }
 ];
 
