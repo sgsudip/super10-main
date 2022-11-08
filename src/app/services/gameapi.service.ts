@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+
 var crypto = require('crypto-browserify');
 var httpBuildQuery = require('http-build-query');
 var uniqid = require('locutus/php/misc/uniqid');
@@ -11,35 +12,34 @@ var php_array = require('locutus/php/array');
 
 // game api srevice
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 // the class that contains the methods for interacting with the slotegrator api, its now called apigrator
 export class GameapiService {
-    // whatgame headers can be there
+  // whatgame headers can be there
   gameHeaders: any;
   // get the staging url
   stageURl = environment.game_stage_url;
   // what can be the game url
-  gameUrl:any;
+  gameUrl: any;
   // get the config object
   list = {
     freespin_valid_until_full_day: 0,
     has_freespins: 0,
     has_lobby: 1,
     has_tables: 0,
-    image: "https://staging.slotegrator.com/api/index.php/image/get?hash=e88a563aed2cc6ddbfc263587def1d6d0e0eb145.png",
+    image:
+      'https://staging.slotegrator.com/api/index.php/image/get?hash=e88a563aed2cc6ddbfc263587def1d6d0e0eb145.png',
     is_mobile: 1,
-    name: "Roulette",
-    provider: "Vivogaming",
-    technology: "HTML5",
-    type: "roulette",
-    uuid: "e88a563aed2cc6ddbfc263587def1d6d0e0eb145"
-  }
+    name: 'Roulette',
+    provider: 'Vivogaming',
+    technology: 'HTML5',
+    type: 'roulette',
+    uuid: 'e88a563aed2cc6ddbfc263587def1d6d0e0eb145',
+  };
   defaultHeaderObj: any;
 
-  constructor(private http: HttpClient,private router:Router) {
-
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   // async getAllGames() {
 
@@ -65,27 +65,49 @@ export class GameapiService {
 
   // }
 
-  fetchGameUrl(url:string) {
+  fetchGames(){
+    
+    const getData = {
+        game_uuid: uniqid,
+        player_id: 'demo',
+        player_name: 'demo_123',
+      };
+   
+      this.http
+        .get(`https://super10.live/api/getGames`,)
+        .subscribe((res: any) => {
+          console.log('here is the game initialization response');
+          console.log(res);
+        //   this.gameUrl = res.message.language_data.url;
+        //   this.router.navigateByUrl('/gameview');
+        });
+    //   return this.gameUrl;
+  }
+  // get the game url to redirect the user to
+  fetchGameUrl(uuid: string) {
     // console.log(data)
     // const randomNbr = mt_rand();
     // const uniqId = uniqid(randomNbr, true)
     // const uniqId_string = MD5(uniqId).toString();
     // var token: any = JSON.parse(localStorage.getItem('token')!)
-   const postData = {
-      'game_uuid': url,
-      'player_id': "demo",
-      'player_name': "demo_123"
+    const postData = {
+      game_uuid: uuid,
+      player_id: 'demo',
+      player_name: 'demo_123',
     };
     // ksort(this.defaultHeaderObj);
     // console.log( php_array.ksort(this.defaultHeaderObj))
     // const postData = httpBuildQuery(this.defaultHeaderObj);
     // this.gameHeaders = this.xSignGenerate(this.defaultHeaderObj);
-    this.http.post(`http://127.0.0.1:8000/gamesInit`, postData).subscribe((res:any)=>{
-		this.gameUrl=res.message.language_data.url;
-    this.router.navigateByUrl('/gameview')
-    });
+    this.http
+      .post(`https://super10.live/api/gamesInit`, postData)
+      .subscribe((res: any) => {
+        console.log('here is the game initialization response');
+        console.log(res);
+        this.gameUrl = res.message.language_data.url;
+        this.router.navigateByUrl('/gameview');
+      });
     return this.gameUrl;
-
   }
 
   // xSignGenerate(data: any) {

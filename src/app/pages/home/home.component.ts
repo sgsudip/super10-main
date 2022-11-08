@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
 		console.log('hai')
 		this.url = this.sanitize.bypassSecurityTrustUrl("https://web.telegram.org/z/");
 		// this.auth.get().subscribe(res=>{
-
 		// });
 	}
 
@@ -129,10 +128,14 @@ export class HomeComponent implements OnInit {
 		this.router.navigateByUrl("/promotion")
 	}
 	gameDetail() {
-		this.router.navigateByUrl("gamedetail");
+		this.router.navigateByUrl("/gamedetail");
 	}
+    getGames(){
+        this.game.fetchGames();
+    }
 	async gameInit(i:any) {
 		await this.game.fetchGameUrl(i.uuid);
+        // this.game.fetchGames();
 	}
 
 }
