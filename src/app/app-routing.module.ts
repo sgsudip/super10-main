@@ -7,11 +7,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.component';
 import { PromotionsComponent } from './pages/promotions/promotions.component';
 import { ViewallComponent } from './pages/viewall/viewall.component';
+import {PrivacyComponent} from './pages/privacy/privacy.component';
 
 const routes: Routes = [{
 	path: '',
 	component: HomeComponent
-}, {
+}, 
+{
 	path: 'viewall',
 	component: ViewallComponent
 },
@@ -38,7 +40,12 @@ const routes: Routes = [{
 {
 	path: 'promotion/promotioninfo',
 	component: PromotioninfoComponent
-}];
+},
+{
+    path: 'privacy',
+    component: PrivacyComponent
+}
+];
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes,{useHash:true})],

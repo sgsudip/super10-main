@@ -9,13 +9,19 @@ var MD5 = require('locutus/php/strings/md5');
 var mt_rand = require('locutus/php/math/mt_rand');
 var php_array = require('locutus/php/array');
 
+// game api srevice
 @Injectable({
   providedIn: 'root'
 })
+// the class that contains the methods for interacting with the slotegrator api, its now called apigrator
 export class GameapiService {
+    // whatgame headers can be there
   gameHeaders: any;
+  // get the staging url
   stageURl = environment.game_stage_url;
+  // what can be the game url
   gameUrl:any;
+  // get the config object
   list = {
     freespin_valid_until_full_day: 0,
     has_freespins: 0,
@@ -74,7 +80,7 @@ export class GameapiService {
     // console.log( php_array.ksort(this.defaultHeaderObj))
     // const postData = httpBuildQuery(this.defaultHeaderObj);
     // this.gameHeaders = this.xSignGenerate(this.defaultHeaderObj);
-    this.http.post(`http://localhost:8000/gamesInit`, postData).subscribe((res:any)=>{
+    this.http.post(`http://127.0.0.1:8000/gamesInit`, postData).subscribe((res:any)=>{
 		this.gameUrl=res.message.language_data.url;
     this.router.navigateByUrl('/gameview')
     });

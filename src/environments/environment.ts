@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  base_url: 'api',
+  production: true,
+  base_url: '/api',
   game_stage_url: "https://staging.slotegrator.com/api/index.php/v1"
 };
 

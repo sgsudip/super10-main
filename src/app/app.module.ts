@@ -23,6 +23,8 @@ import { AngularMaterialModule } from './services/angular-material.module';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GameViewComponent } from './game-view/game-view.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -37,7 +39,8 @@ import { GameViewComponent } from './game-view/game-view.component';
   ChatwidgetComponent,
   DashboardComponent,
   NavmenuComponent,
-  GameViewComponent
+  GameViewComponent,
+  PrivacyComponent
 	],
 	imports: [
 		BrowserModule,
