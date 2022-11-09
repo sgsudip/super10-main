@@ -65,16 +65,16 @@ export class GameapiService {
 
   // }
 
-  fetchGames(){
+  fetchGames(uuid: string){
     
     const getData = {
-        game_uuid: uniqid,
+        game_uuid: uuid,
         player_id: 'demo',
         player_name: 'demo_123',
       };
    
       this.http
-        .get(`https://super10.live/api/getGames`,)
+        .get(`https://super10.live/api/getGames`,{params: getData})
         .subscribe((res: any) => {
           console.log('here is the game initialization response');
           console.log(res);
