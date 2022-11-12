@@ -53,7 +53,7 @@
     <div class="container mobile-view-blk">
       <ul class="mobile-menu-lists">
         <div  *ngFor="let item of menu" class="li-block d-flex justify-content-between" (click)="menuRoute(item.name)">
-          <li class="mob-menu-list">{{item.name}}
+          <li class="mob-menu-list hi">{{item.name}}
           </li>
           <i *ngIf="item.name=='User Menu'" class="fa-solid fa-angle-down"></i>
         </div>

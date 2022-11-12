@@ -13,10 +13,10 @@ import { GameapiService } from 'src/app/services/gameapi.service';
 	providers: [NgbModalConfig, NgbModal]
 })
 export class HeaderComponent implements OnInit {
-	signInForm: FormGroup;
 	loginBool: boolean = true;
-	registerForm: FormGroup;
-	
+    registerForm: FormGroup;
+    signInForm: FormGroup;
+	forgotPasswordForm: FormGroup;
 
 	constructor(config: NgbModalConfig,
 		private modalService: NgbModal,
@@ -43,6 +43,12 @@ export class HeaderComponent implements OnInit {
 			email: new FormControl('', [Validators.required]),
 
 		});
+        this.forgotPasswordForm = new FormGroup({
+			// ValidationCheck.passwordValidator
+			email: new FormControl("", [Validators.required]),
+			password: new FormControl('', [Validators.required]),
+
+		});
 	}
 
 	ngOnInit(): void {
@@ -56,16 +62,23 @@ export class HeaderComponent implements OnInit {
 		// })
 	}
 
-	open(login: any) {
-		this.modalService.open(login);
+	open(page: any) {
+        this.modalService.dismissAll();
+		this.modalService.open(page);
 	}
 
+    openforgotpassword(forgotpassword: any){
+        this.modalService.dismissAll();
+		this.modalService.open(forgotpassword);
+    }
 	regopen(register: any) {
 		this.modalService.open(register);
 	}
 	home() {
 		this.router.navigateByUrl("/home")
 	}
+    // client side functions for registration and login
+
     // as the name suggests this function is used to execute the login process for the user, this controller is run by the login modal
 	loginUser() {
         // show the spinner, when a response is received either, success or failure we havve to close the spinner
@@ -119,6 +132,7 @@ export class HeaderComponent implements OnInit {
 			"agree": 1
 		}
 		this.auth.register(post).subscribe((res: any) => {
+            console.log(res);
 			setTimeout(() => {
 				this.spinner.hide();
 			}, 2000);
@@ -143,8 +157,40 @@ export class HeaderComponent implements OnInit {
 		})
 
 	}
+    resetpassword(){
+        this.spinner.show();
+		let postData =
+		{
+			"email": this.forgotPasswordForm.get('email')?.value,
+			"password": this.forgotPasswordForm.get('password')?.value,
+            "type":"email"
+		}
+        this.auth.resetpassword(postData).subscribe((res: any) => {
+            console.log(res);
+			setTimeout(() => {
+				this.spinner.hide();
+			}, 2000);
+			// if (res.code == 401 || res.code != 200) {
+			// 	this.snackBar.open(`Please enter Valid data`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
+			// }
+			// else {
+			// 	if (res.code == 200) {
+			// 		if (res.message.error) {
+			// 			this.snackBar.open(`Please Enter Valid and Unique Credentials`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
+			// 		}
+			// 		else {
+			// 			this.snackBar.open(`Registered SuccessFully`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
+			// 			this.modalService.dismissAll();
+			// 		}
+			// 	}
+			// 
+        })
+    }
+    // logout of the website
 	logout() {
+        // empty the localstorage
 		localStorage.clear();
+        // set login bool to true indicating that the user needs to login
 		this.loginBool = true
 	}
 }

@@ -1,84 +1,90 @@
 <div class="navbar d-flex justify-content-between align-items-center p-2">
-	<div (click)="home()">
-		<img src="./assets/logo.jfif" alt="logo" class="logo">
-	</div>
-	<div>
-		<input placeholder="Search" class="d-none d-md-inline" />
-		<button (click)="open(login)" *ngIf="loginBool">Login</button>
-		<button (click)="logout()" *ngIf="!loginBool">LogOut</button>
-		<button (click)="regopen(register)" *ngIf="loginBool">Sign Up</button>
-	</div>
+  <div (click)="home()">
+    <img src="./assets/logo.jfif" alt="logo" class="logo" />
+  </div>
+  <div>
+    <input placeholder="Search" class="d-none d-md-inline" />
+    <button (click)="open(login)" *ngIf="loginBool">Login</button>
+    <button (click)="logout()" *ngIf="!loginBool">LogOut</button>
+    <button (click)="regopen(register)" *ngIf="loginBool">Sign Up</button>
+  </div>
 </div>
 
-
 <ng-template #login let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Login</h4>
-		<button class="btn-close" (click)="d('Cross click')"></button>
-	</div>
-	<form [formGroup]="signInForm">
-	<div class="modal-body">
-		<div>
-			<label>Email</label>
-			<input class="form-control" formControlName="username" />
-			<!-- <form class="example-form">
-				<mat-form-field class="example-full-width" appearance="fill">
-				  <mat-label>Email</mat-label>
-				  <input matInput placeholder="Enter Email" >
-				</mat-form-field>
-				</form> -->
-		</div>
-		<div>
-			<label>Password</label>
-			<input class="form-control" type="password" formControlName="password" />
-			<!-- <form class="example-form">
-				<mat-form-field class="example-full-width" appearance="fill">
-				  <mat-label>Password</mat-label>
-				  <input matInput placeholder="Enter Password" value="">
-				</mat-form-field>
-			</form> -->
-		</div>
-		<!-- <form class="example-form">
-			<mat-form-field class="example-full-width" appearance="fill">
-			  <mat-label>Favorite food</mat-label>
-			  <input matInput placeholder="Ex. Pizza" value="Sushi">
-			</mat-form-field>
-		  
-			<mat-form-field class="example-full-width" appearance="fill">
-			  <mat-label>Leave a comment</mat-label>
-			  <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-			</mat-form-field>
-		  </form> -->
-		<button (click)="loginUser()">Login</button>
-	</div>
-</form>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Login</h4>
+    <button class="btn-close" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="signInForm">
+    <div class="modal-body">
+      <div>
+        <label>Email</label>
+        <input class="form-control" formControlName="username" />
+      </div>
+      
+      <div>
+        <label>Password</label>
+        <input
+          class="form-control"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+
+      <button (click)="loginUser()">Login</button>
+      <div style="margin-top: 10px;">
+        <button href="#" (click)="openforgotpassword(forgotpassword)">
+          Forgot password?
+        </button>
+      </div>
+    </div>
+  </form>
 </ng-template>
 
-
 <ng-template #register let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Register</h4>
-		<button class="btn-close" (click)="d('Cross click')"></button>
-	</div>
-	<form [formGroup]="registerForm">
-	<div class="modal-body">
-		<div>
-			<label>User Name</label>
-			<input class="form-control" formControlName="username" />
-		</div>
-		<div>
-			<label>Email</label>
-			<input class="form-control" formControlName="email" />
-		</div>
-		<div>
-			<label>Password</label>
-			<input class="form-control" formControlName="password" />
-		</div>
-		<div>
-			<label>Phone Number</label>
-			<input class="form-control" formControlName="phoneNbr" />
-		</div>
-		<button (click)="registerUser()">Register</button>
-	</div>
-	</form>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Register</h4>
+    <button class="btn-close" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="registerForm">
+    <div class="modal-body">
+      <div>
+        <label>User Name</label>
+        <input class="form-control" formControlName="username" />
+      </div>
+      <div>
+        <label>Email</label>
+        <input class="form-control" formControlName="email" />
+      </div>
+      <div>
+        <label>Password</label>
+        <input class="form-control" formControlName="password" />
+      </div>
+      <div>
+        <label>Phone Number</label>
+        <input class="form-control" formControlName="phoneNbr" />
+      </div>
+      <button (click)="registerUser()">Register</button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #forgotpassword let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create new password</h4>
+    <button class="btn-close" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="forgotPasswordForm">
+    <div class="modal-body">
+      <div>
+        <label>Email</label>
+        <input type="email" class="form-control" formControlName="email" />
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" class="form-control" formControlName="password" />
+      </div>
+      <button (click)="resetpassword()">Reset</button>
+    </div>
+  </form>
 </ng-template>
