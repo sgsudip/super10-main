@@ -110,6 +110,27 @@ export class GameapiService {
     return this.gameUrl;
   }
 
+  testValidate(uuid: string) {
+    // console.log(data)
+    // const randomNbr = mt_rand();
+    // const uniqId = uniqid(randomNbr, true)
+    // const uniqId_string = MD5(uniqId).toString();
+    // var token: any = JSON.parse(localStorage.getItem('token')!)
+    const postData = {
+      game_uuid: uuid,
+      player_id: 'demo',
+      player_name: 'demo_123',
+    };
+
+    this.http
+      .post(`https://super10.live/api/testValidate`, postData)
+      .subscribe((res: any) => {
+        console.log('Here is the test api response');
+        console.log(res);
+      });
+    return this.gameUrl;
+  }
+
   // xSignGenerate(data: any) {
   //   const randomNbr = mt_rand();
   //   const uniqId = uniqid(randomNbr, true)

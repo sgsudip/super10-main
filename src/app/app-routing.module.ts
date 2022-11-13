@@ -9,7 +9,7 @@ import { PromotionsComponent } from './pages/promotions/promotions.component';
 import { ViewallComponent } from './pages/viewall/viewall.component';
 import {PrivacyComponent} from './pages/privacy/privacy.component';
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
-
+import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
 const routes: Routes = [{
 	path: '',
 	component: HomeComponent
@@ -49,11 +49,15 @@ const routes: Routes = [{
 {
     path: 'returnpolicy',
     component: ReturnpolicyComponent
+},
+{
+    path: 'passwordreset/:token',
+    component: PasswordresetComponent
 }
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes,{useHash:true})],
+	imports: [RouterModule.forRoot(routes,{useHash:false})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule { }

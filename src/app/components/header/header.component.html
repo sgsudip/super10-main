@@ -31,9 +31,9 @@
         />
       </div>
 
-      <button (click)="loginUser()">Login</button>
+      <button class="btn-lg" (click)="loginUser()">Login</button>
       <div style="margin-top: 10px;">
-        <button href="#" (click)="openforgotpassword(forgotpassword)">
+        <button class="btn-lg" (click)="openforgotpassword(forgotpassword)">
           Forgot password?
         </button>
       </div>
@@ -78,11 +78,7 @@
     <div class="modal-body">
       <div>
         <label>Email</label>
-        <input type="email" class="form-control" formControlName="email" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" class="form-control" formControlName="password" />
+        <input type="email" class="form-control" formControlName="email" autocomplete/>
       </div>
       <button (click)="resetpassword()">Reset</button>
     </div>

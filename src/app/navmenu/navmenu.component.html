@@ -28,6 +28,7 @@
           <li class="menu-list-item" *ngFor="let item of menu">{{item.name}}</li>
         </ul>
         <div class="dropdown" *ngIf="!mobileWidth">
+            <!-- profile icon -->
     <img class="avatar dropbtn" src="http://localhost:8000/assets/images/avatar.png">
     <div class="dropdown-content">
     <a *ngFor="let item of profileMenu" (click)="changeView(item.name)" >{{item.name}}</a>
@@ -64,3 +65,22 @@
       </ul>
     </div>
 </div>
+<!-- <ng-template #login let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Login</h4>
+		<button class="btn-close" (click)="d('Cross click')"></button>
+	</div>
+	<form [formGroup]="signInForm">
+	<div class="modal-body">
+		<div>
+			<label>Email</label>
+			<input class="form-control" formControlName="username" />
+		</div>
+		<div>
+			<label>Password</label>
+			<input class="form-control" type="password" formControlName="password" />
+		</div>
+		<button (click)="loginUser()">Login</button>
+	</div>
+</form>
+</ng-template> -->

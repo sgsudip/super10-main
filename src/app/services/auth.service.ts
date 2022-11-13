@@ -33,7 +33,11 @@ export class AuthService {
     return this.http.post(`${this.BASE_URL}/register`,data, { headers: this.headers });
   }
 
-  resetpassword(data: any){
+  sendresetmail(data: any){
     return this.http.post(`${this.BASE_URL}/password/email`,data,{headers: this.headers});
+  }
+
+  resetpassword(data:any){
+    return this.http.post(`${this.BASE_URL}/password/reset`,data,{headers:this.headers})
   }
 }

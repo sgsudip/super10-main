@@ -46,8 +46,6 @@ export class HeaderComponent implements OnInit {
         this.forgotPasswordForm = new FormGroup({
 			// ValidationCheck.passwordValidator
 			email: new FormControl("", [Validators.required]),
-			password: new FormControl('', [Validators.required]),
-
 		});
 	}
 
@@ -67,9 +65,10 @@ export class HeaderComponent implements OnInit {
 		this.modalService.open(page);
 	}
 
-    openforgotpassword(forgotpassword: any){
+    openforgotpassword(forgotpassword:any){
         this.modalService.dismissAll();
 		this.modalService.open(forgotpassword);
+        // this.router.navigateByUrl("/password/reset")
     }
 	regopen(register: any) {
 		this.modalService.open(register);
@@ -162,14 +161,17 @@ export class HeaderComponent implements OnInit {
 		let postData =
 		{
 			"email": this.forgotPasswordForm.get('email')?.value,
-			"password": this.forgotPasswordForm.get('password')?.value,
-            "type":"email"
 		}
-        this.auth.resetpassword(postData).subscribe((res: any) => {
+        this.auth.sendresetmail(postData).subscribe((res: any) => {
             console.log(res);
+            if(res.success){
+                console.log("Email sent");
+                this.modalService.dismissAll();
+                this.router.navigateByUrl("passwordreset")
+            }
 			setTimeout(() => {
 				this.spinner.hide();
-			}, 2000);
+			}, 1000);
 			// if (res.code == 401 || res.code != 200) {
 			// 	this.snackBar.open(`Please enter Valid data`, '', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'center' });
 			// }
@@ -183,7 +185,7 @@ export class HeaderComponent implements OnInit {
 			// 			this.modalService.dismissAll();
 			// 		}
 			// 	}
-			// 
+			
         })
     }
     // logout of the website
