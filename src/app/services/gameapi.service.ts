@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-
 var crypto = require('crypto-browserify');
 var httpBuildQuery = require('http-build-query');
 var uniqid = require('locutus/php/misc/uniqid');
@@ -19,7 +18,7 @@ export class GameapiService {
   // whatgame headers can be there
   gameHeaders: any;
   // get the staging url
-  stageURl = environment.game_stage_url;
+  stageURL = environment.game_stage_url;
   // what can be the game url
   gameUrl: any;
   // get the config object
@@ -38,51 +37,51 @@ export class GameapiService {
     uuid: 'e88a563aed2cc6ddbfc263587def1d6d0e0eb145',
   };
   defaultHeaderObj: any;
-
+  private BASE_URL = environment.base_url;
   constructor(private http: HttpClient, private router: Router) {}
 
-  // async getAllGames() {
-
-  //   const authObj: object = {
-  //     'page': 2,
-  //   };
-  //   // this.gameHeaders = this.xSignGenerate(authObj);
-  //   // const response = await fetch(`${this.stageURl}/games?page=2`, {
-  //   //   method: 'get',
-  //   //   headers: this.gameHeaders,
-  //   // });
-  //   return this.http.get(`${this.stageURl}/games?page=2`, { headers: this.gameHeaders });
-
-  // }
-  // getGameLobby() {
-  //   const authObj: object = {
-  //     "currency": "EUR",
-  //     'game_uuid': "e88a563aed2cc6ddbfc263587def1d6d0e0eb145"
-
-  //   };
-  //   this.gameHeaders = this.xSignGenerate(authObj);
-  //   return this.http.get('http://localhost:4200/#/api',{ headers: this.gameHeaders });
-
-  // }
-
-  fetchGames(uuid: string){
-    
-    const getData = {
-        game_uuid: uuid,
-        player_id: 'demo',
-        player_name: 'demo_123',
-      };
-   
-      this.http
-        .get(`https://super10.live/api/getGames`,{params: getData})
-        .subscribe((res: any) => {
-          console.log('here is the game initialization response');
-          console.log(res);
-        //   this.gameUrl = res.message.language_data.url;
-        //   this.router.navigateByUrl('/gameview');
-        });
-    //   return this.gameUrl;
+  async getAllGames() {
+    const authObj: object = {
+      page: 2,
+    };
+    this.gameHeaders = this.xSignGenerate(authObj);
+    const response = await fetch(`${this.stageURL}/games?page=2`, {
+      method: 'get',
+      headers: this.gameHeaders,
+    });
+    return this.http.get(`${this.stageURL}/games?page=2`, {
+      headers: this.gameHeaders,
+    });
   }
+  //   get lobby
+  getGameLobby() {
+    const authObj: object = {
+      currency: 'EUR',
+      game_uuid: 'e88a563aed2cc6ddbfc263587def1d6d0e0eb145',
+    };
+    this.gameHeaders = this.xSignGenerate(authObj);
+    return this.http.get(`${this.stageURL}/games/lobby`, {
+      headers: this.gameHeaders,
+    });
+  }
+
+//   get all games
+  fetchGames(uuid: string) {
+    const getData = {
+      game_uuid: uuid,
+      player_id: 'demo',
+      player_name: 'demo_123',
+    };
+
+    this.http
+      .get(`https://super10.live/api/getGames`, { params: getData })
+      .subscribe((res: any) => {
+        console.log('Here is the game initialization response');
+        console.log(res);
+      });
+  }
+
+  // game initialization request
   // get the game url to redirect the user to
   fetchGameUrl(uuid: string) {
     // console.log(data)
@@ -123,7 +122,7 @@ export class GameapiService {
     };
 
     this.http
-      .post(`https://super10.live/api/testValidate`, postData)
+      .post(`${this.BASE_URL}/testValidate`, postData)
       .subscribe((res: any) => {
         console.log('Here is the test api response');
         console.log(res);
@@ -131,27 +130,32 @@ export class GameapiService {
     return this.gameUrl;
   }
 
-  // xSignGenerate(data: any) {
-  //   const randomNbr = mt_rand();
-  //   const uniqId = uniqid(randomNbr, true)
-  //   const uniqId_string = MD5(uniqId).toString();
-  //   console.log(data.session_id)
-  //   data = {
-  //     "X-Merchant-Id": 'ae88ab8ee84ff40a76f1ec2e0f7b5caa', "X-Nonce": data.session_id ? data.session_id : uniqId_string,
-  //     "X-Timestamp": Math.floor(Date.now() / 1000.).toString(), ...data
-  //   }
-  //   const xSignParams = httpBuildQuery(data);
-  //   console.log(xSignParams)
-  //   const xSign = crypto.createHmac("sha1", "4953e491031d3f9e7545223885cf43a7403f14cb").update(xSignParams.toString()).digest('hex');
-  //   return new HttpHeaders({
-  //     'X-Merchant-Id': 'ae88ab8ee84ff40a76f1ec2e0f7b5caa',
-  //     'X-Timestamp': data['X-Timestamp'],
-  //     'X-Nonce': data.session_id ? data.session_id : uniqId_string,
-  //     'X-Sign': xSign,
-  //     'Accept': 'application/json',
-  //     'Enctype': 'application/x-www-form-urlencoded',
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //     'Access-Control-Allow-Origin': '*'
-  //   });
-  // }
+  xSignGenerate(data: any) {
+    const randomNbr = mt_rand();
+    const uniqId = uniqid(randomNbr, true);
+    const uniqId_string = MD5(uniqId).toString();
+    console.log(data.session_id);
+    data = {
+      'X-Merchant-Id': 'ae88ab8ee84ff40a76f1ec2e0f7b5caa',
+      'X-Nonce': data.session_id ? data.session_id : uniqId_string,
+      'X-Timestamp': Math.floor(Date.now() / 1000).toString(),
+      ...data,
+    };
+    const xSignParams = httpBuildQuery(data);
+    console.log(xSignParams);
+    const xSign = crypto
+      .createHmac('sha1', '4953e491031d3f9e7545223885cf43a7403f14cb')
+      .update(xSignParams.toString())
+      .digest('hex');
+    return new HttpHeaders({
+      'X-Merchant-Id': 'ae88ab8ee84ff40a76f1ec2e0f7b5caa',
+      'X-Timestamp': data['X-Timestamp'],
+      'X-Nonce': data.session_id ? data.session_id : uniqId_string,
+      'X-Sign': xSign,
+      Accept: 'application/json',
+      Enctype: 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin': '*',
+    });
+  }
 }
