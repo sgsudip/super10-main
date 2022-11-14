@@ -34,10 +34,13 @@ export class AuthService {
   }
 
   sendresetmail(data: any){
+    data.type = "email";
+    data.value = data.email;
     return this.http.post(`${this.BASE_URL}/password/email`,data,{headers: this.headers});
   }
 
-  resetpassword(data:any){
+  resetpassword(data:any,token: any){
+    data.token = token;
     return this.http.post(`${this.BASE_URL}/password/reset`,data,{headers:this.headers})
   }
 }
