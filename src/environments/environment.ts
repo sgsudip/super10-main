@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  base_url: 'api',
+  production: TextTrackCueList,
+  base_url: 'http://localhost:8000/api',
   game_stage_url: "https://staging.slotegrator.com/api/index.php/v1"
 };
 

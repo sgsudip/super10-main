@@ -26,6 +26,7 @@ import { GameViewComponent } from './game-view/game-view.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PasswordresetComponent } from './pages/passwordreset/passwordreset.comp
     PrivacyComponent,
     ReturnpolicyComponent,
     PasswordresetComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

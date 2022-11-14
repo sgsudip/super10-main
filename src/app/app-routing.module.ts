@@ -10,6 +10,8 @@ import { ViewallComponent } from './pages/viewall/viewall.component';
 import {PrivacyComponent} from './pages/privacy/privacy.component';
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+
 const routes: Routes = [{
 	path: '',
 	component: HomeComponent
@@ -53,11 +55,16 @@ const routes: Routes = [{
 {
     path: 'passwordreset/:token',
     component: PasswordresetComponent
+},
+{
+    path: "**",
+    pathMatch: "full",
+    component: PagenotfoundComponent
 }
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes,{useHash:true})],
+	imports: [RouterModule.forRoot(routes,{enableTracing: true,useHash:true})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule { }
