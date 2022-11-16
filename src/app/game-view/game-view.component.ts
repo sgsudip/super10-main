@@ -15,6 +15,15 @@ export class GameViewComponent implements OnInit {
 
    this.url= this.sanitizer.bypassSecurityTrustResourceUrl(this.gameapi.gameUrl);
 
+   setTimeout(()=>{
+    this.testValidate();
+   },5000)
+   
+  }
+
+  testValidate(){
+    console.log("testvalidate function");
+    this.gameapi.testValidate();
   }
 
 }

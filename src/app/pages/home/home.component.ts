@@ -133,8 +133,8 @@ export class HomeComponent implements OnInit {
     getGames(i: any){
         this.game.fetchGames(i.uuid);
     }
-    testValidate(i: any){
-        this.game.testValidate(i.uuid);
+    testValidate(){
+        this.game.testValidate();
     }
 	async gameInit(i:any) {
 		await this.game.fetchGameUrl(i.uuid);

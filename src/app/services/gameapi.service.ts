@@ -103,20 +103,23 @@ export class GameapiService {
       .subscribe((res: any) => {
         console.log('here is the game initialization response');
         console.log(res);
+        // assigning the game callback url here
         this.gameUrl = res.message.language_data.url;
         this.router.navigateByUrl('/gameview');
       });
+    //   function returning data to calling component here
     return this.gameUrl;
   }
 
-  testValidate(uuid: string) {
-    // console.log(data)
+  testValidate() {
+    console.log("testvalidate api");
+    // console.log(data);
     // const randomNbr = mt_rand();
-    // const uniqId = uniqid(randomNbr, true)
+    // const uniqId = uniqid(randomNbr, true);
     // const uniqId_string = MD5(uniqId).toString();
-    // var token: any = JSON.parse(localStorage.getItem('token')!)
+    // var token: any = JSON.parse(localStorage.getItem('token')!);
     const postData = {
-      game_uuid: uuid,
+      
       player_id: 'demo',
       player_name: 'demo_123',
     };
