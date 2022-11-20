@@ -11,6 +11,7 @@ import {PrivacyComponent} from './pages/privacy/privacy.component';
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 
 const routes: Routes = [{
 	path: '',
@@ -35,6 +36,10 @@ const routes: Routes = [{
 {
 	path: 'dashboard',
 	component: DashboardComponent
+},
+{
+    path: 'transactions',
+    component: TransactionsComponent
 },
 {
 	path: 'gameview',
@@ -64,7 +69,7 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes,{enableTracing: true,useHash:true})],
+	imports: [RouterModule.forRoot(routes,{enableTracing: true,useHash:false})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule { }

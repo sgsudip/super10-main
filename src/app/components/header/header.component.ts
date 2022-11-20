@@ -20,7 +20,7 @@ import { GameapiService } from 'src/app/services/gameapi.service';
   providers: [NgbModalConfig, NgbModal],
 })
 export class HeaderComponent implements OnInit {
-  loginBool: boolean = true;
+  loginBool: boolean = false;
   registerForm: FormGroup;
   signInForm: FormGroup;
   forgotPasswordForm: FormGroup;
@@ -61,17 +61,20 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // if there is no token
     if (localStorage.getItem('token')) {
-      this.loginBool = false;
+      this.loginBool = true;
     }
+    this.gameService.getAllGames();
     // this.gameService.getAllGames().subscribe((res: any) => {
-    // 	this.list = res.items;
-    // 	this.list = this.list.filter((result: any) => result.name === "Roulette");
-    // 	console.log(this.list)
+    // console.log(res);
+    // this.list = res.items;
+    // this.list = this.list.filter((result: any) => result.name === "Roulette");
+    // console.log(this.list);
     // })
   }
 
-  open(page: any) {
+  openlogin(page: any) {
     this.modalService.dismissAll();
     this.modalService.open(page);
   }
@@ -81,13 +84,20 @@ export class HeaderComponent implements OnInit {
     this.modalService.open(forgotpassword);
     // this.router.navigateByUrl("/password/reset")
   }
-  regopen(register: any) {
+
+  openregister(register: any) {
+    this.modalService.dismissAll();
     this.modalService.open(register);
   }
+
+  goToDashboard() {
+    console.log('Go to dashboard');
+    this.router.navigateByUrl('/dashboard');
+  }
+
   home() {
     this.router.navigateByUrl('/home');
   }
-  // client side functions for registration and login
 
   // as the name suggests this function is used to execute the login process for the user, this controller is run by the login modal
   loginUser() {
@@ -96,6 +106,7 @@ export class HeaderComponent implements OnInit {
     // call the authservice controller
     this.auth.login(this.signInForm.value).subscribe(
       (res: any) => {
+        console.log(res);
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);
@@ -113,11 +124,15 @@ export class HeaderComponent implements OnInit {
           console.log('The response object \n');
           console.log(res);
           // get the accesstoken for the user
-          const token = res.data.access_token;
-          // close all modals
-          this.modalService.dismissAll();
+          let token = res.data.access_token;
           // set the token in localstorage
           localStorage.setItem('token', JSON.stringify(token));
+        //   set username
+          let uname = res.data.user.username;
+          localStorage.setItem('username', uname);
+          // close all modals
+          this.modalService.dismissAll();
+
           // open the box, basically a notification alert type box, shallow men with insecure egos like to call it a snack or a toast or something that humans eat because you dont need to name things sensibly, you can just
           this.snackBar.open(`Logged In SuccessFully`, '', {
             duration: 3000,
@@ -159,6 +174,20 @@ export class HeaderComponent implements OnInit {
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);
+
+        // if the user is created
+        if (res.status == 'ok' && res.code == 200) {
+          console.log('Registration successfull');
+          this.snackBar.open(`Registered SuccessFully`, '', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+          });
+          this.modalService.dismissAll();
+          console.log(this.modalService);
+          return;
+        }
+
         if (res.code == 401 || res.code != 200) {
           this.snackBar.open(`Please enter Valid data`, '', {
             duration: 3000,
@@ -167,6 +196,7 @@ export class HeaderComponent implements OnInit {
           });
         } else {
           if (res.code == 200) {
+            // if message contains error
             if (res.message.error) {
               this.snackBar.open(
                 `Please Enter Valid and Unique Credentials`,
@@ -178,6 +208,7 @@ export class HeaderComponent implements OnInit {
                 }
               );
             } else {
+              console.log('registration successfull');
               this.snackBar.open(`Registered SuccessFully`, '', {
                 duration: 3000,
                 verticalPosition: 'top',
@@ -199,6 +230,8 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+
+  // call reset password from auth
   resetpassword() {
     this.spinner.show();
     let postData = {
@@ -234,6 +267,6 @@ export class HeaderComponent implements OnInit {
     // empty the localstorage
     localStorage.clear();
     // set login bool to true indicating that the user needs to login
-    this.loginBool = true;
+    this.loginBool = false;
   }
 }

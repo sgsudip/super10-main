@@ -51,6 +51,10 @@ button:last-child {
   padding: 15px;
 }
 
+.dash-cards{
+    cursor: pointer;
+}
+
 @media (min-width:768px) {
   .logo {
     max-width: 90px;

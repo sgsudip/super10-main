@@ -40,18 +40,21 @@ export class GameapiService {
   private BASE_URL = environment.base_url;
   constructor(private http: HttpClient, private router: Router) {}
 
-  async getAllGames() {
+   getAllGames() {
     const authObj: object = {
       page: 2,
     };
     this.gameHeaders = this.xSignGenerate(authObj);
-    const response = await fetch(`${this.stageURL}/games?page=2`, {
-      method: 'get',
+    // const response = fetch(`${this.stageURL}/games?page=2`, {
+    //   method: 'get',
+    //   headers: this.gameHeaders,
+    // });
+    // console.log(response);
+    let response =  this.http.get(`${this.stageURL}/games?page=2`, {
       headers: this.gameHeaders,
     });
-    return this.http.get(`${this.stageURL}/games?page=2`, {
-      headers: this.gameHeaders,
-    });
+
+    console.log(response);
   }
   //   get lobby
   getGameLobby() {

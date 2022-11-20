@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { LocationStrategy, Location, PathLocationStrategy } from "@angular/common";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -27,6 +28,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.compone
     ReturnpolicyComponent,
     PasswordresetComponent,
     PagenotfoundComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,7 @@ import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.compone
     AngularMaterialModule,
     NgxSpinnerModule,
   ],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

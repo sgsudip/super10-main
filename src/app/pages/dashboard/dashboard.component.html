@@ -1,65 +1,66 @@
 <section>
   <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-<!-- <div class="navbar d-flex justify-content-between align-items-center p-2">
+  <!-- <div class="navbar d-flex justify-content-between align-items-center p-2">
 	<div (click)="home()">
 		<img src="../../../assets/logo.jfif" alt="logo" class="logo">
 	</div>
 	<div> -->
-		<!-- <input placeholder="Search" class="d-none d-md-inline" /> -->
-		<!-- <button >Home</button>
+  <!-- <input placeholder="Search" class="d-none d-md-inline" /> -->
+  <!-- <button >Home</button>
 		<button>Blog</button>
 		<button>About</button>
 		<button>Contact</button> -->
-        <!-- <img class="avatar" src="https://super10.clickonsave.com/assets/images/avatar.png"> -->
-		
-	<!-- </div> -->
+  <!-- <img class="avatar" src="https://super10.clickonsave.com/assets/images/avatar.png"> -->
+
+  <!-- </div> -->
   <app-navmenu (menuItemStatus)="menuStatus($event)"></app-navmenu>
 
-<!-- </div> -->
-<div class="row content-header-box">
-  <div class="container content-header-text">
-    <strong>{{currentHeader}}</strong>
-  </div>
-
-</div>
-<section *ngIf="currentMenu !='profile'">
-<div class="container-fluid my-5 careds">
-  <div class="container reflink-container">
-    <div class="d-flex reflink-block">
-    <input class="reflink" value="http://localhost:8000/register/user123" disabled>
-    <div class="copyblock">
-      <i class="fa-solid fa-copy"></i>
+  <!-- </div> -->
+  <div class="row content-header-box">
+    <div class="container content-header-text">
+      <strong>{{ currentHeader }}</strong>
     </div>
   </div>
-  </div>
-	<div class="info-content">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-sm-6 cardList" *ngFor="let item of cardList">
-        <div class="dashboard">
-            <div class="sidecard">
-              <i class="card-icon fa-solid {{item.icon}}"></i>
-            </div>
-            <div class="content">
-                <div>
-                    {{item.name}}
-                   </div>
-                   <small>{{dashData?.balance}}</small>
-            </div>
+  <section *ngIf="currentMenu != 'profile'">
+    <div class="container-fluid my-5 careds">
+      <div class="container reflink-container">
+        <div class="d-flex reflink-block">
+          <input class="reflink" value="{{ referralUrl }}" disabled />
+          <div class="copyblock">
+            <i class="fa-solid fa-copy"></i>
+          </div>
         </div>
-  
+      </div>
+      <div class="info-content">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-lg-3 col-sm-6 cardList"
+              *ngFor="let item of cardList"
+            >
+              <div class="dashboard dash-cards" (click)="openpage(item)">
+                <div class="sidecard">
+                  <i class="card-icon fa-solid {{ item.icon }}"></i>
+                </div>
+                <div class="content">
+                  <div>
+                    {{ item.name }}
+                  </div>
+                  <small>{{ dashData?.balance }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
-<div class="container bet-datatable">
-    <h4 class="title mb-3">My Latest Bets</h4>
-    <table>
+    <div class="container bet-datatable">
+      <h4 class="title mb-3">My Latest Bets</h4>
+      <table>
         <tr class="bet-row">
           <th>Match</th>
           <th>Question</th>
-          <th>OPtion</th>
+          <th>Option</th>
           <th>Betted</th>
           <th>Reward</th>
           <th>Status</th>
@@ -74,84 +75,93 @@
           <td></td>
           <td></td> -->
         </tr>
-        </table>
-
-</div>
-</section>
-<section *ngIf="currentMenu ==='profile'" class="profile-section">
-  <div class="container profile-block"> 
- <div class="text-center profile-img-block">
-  <img class="profile-img" src="http://localhost:8000/assets/images/avatar.png">
-  <p class="mt-2">Name: {{this.userData?.firstname}} {{this.userData?.lastname}}</p>
-  <p >Username: {{this.userData?.username}}</p>
- </div>
- <div class=" container profile-input-block">
-  <form [formGroup]="userDataForm">
-  <div class="row">
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label">First Name</label>
-  <input class="profiledata-input" formControlName="firstName">
+      </table>
+    </div>
+  </section>
+  <section *ngIf="currentMenu === 'profile'" class="profile-section">
+    <div class="container profile-block">
+      <div class="text-center profile-img-block">
+        <img
+          class="profile-img"
+          src="http://localhost:8000/assets/images/avatar.png"
+        />
+        <p class="mt-2">
+          Name: {{ this.userData?.firstname }} {{ this.userData?.lastname }}
+        </p>
+        <p>Username: {{ this.userData?.username }}</p>
+      </div>
+      <div class="container profile-input-block">
+        <form [formGroup]="userDataForm">
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">First Name</label>
+                <input class="profiledata-input" formControlName="firstName" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">Last Name</label>
+                <input class="profiledata-input" formControlName="lastName" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">E-mail Address</label>
+                <input class="profiledata-input" formControlName="email" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">Mobile Number</label>
+                <input class="profiledata-input" formControlName="phoneNbr" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">Address</label>
+                <input class="profiledata-input" formControlName="address" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">State</label>
+                <input class="profiledata-input" formControlName="state" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">Zip</label>
+                <input class="profiledata-input" formControlName="zip" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">City</label>
+                <input class="profiledata-input" formControlName="city" />
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-4">
+              <div class="profileinput-block">
+                <label class="profileinput-label">Country</label>
+                <input
+                  class="profiledata-input"
+                  formControlName="country_code"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="container text-center pb-5">
+        <button
+          (click)="updateProfile()"
+          class="btn btn-outline-success update-btn"
+        >
+          Update Profile
+        </button>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label">Last Name</label>
-  <input class="profiledata-input" formControlName="lastName">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label" >E-mail Address</label>
-  <input class="profiledata-input" formControlName="email">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label">Mobile Number</label>
-  <input class="profiledata-input" formControlName="phoneNbr">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label">Address</label>
-  <input class="profiledata-input" formControlName="address">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label">State</label>
-  <input class="profiledata-input" formControlName="state">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label class="profileinput-label">Zip</label>
-  <input class="profiledata-input" formControlName="zip">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label  class="profileinput-label">City</label>
-  <input class="profiledata-input" formControlName="city">
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-xs-4">
-      <div class="profileinput-block">
-  <label  class="profileinput-label">Country</label>
-  <input class="profiledata-input" formControlName="country_code">
-      </div>
-    </div>
-  </div>
-</form>
-
-</div>
-<div class="container text-center pb-5">
-<button (click)="updateProfile()" class="btn btn-outline-success update-btn">Update Profile</button>
-</div>
-  </div>
-
-
-</section>
-<app-footer></app-footer>
+  </section>
+  <app-footer></app-footer>
 </section>

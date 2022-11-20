@@ -4,9 +4,10 @@
   </div>
   <div>
     <input placeholder="Search" class="d-none d-md-inline" />
-    <button (click)="open(login)" *ngIf="loginBool">Login</button>
-    <button (click)="logout()" *ngIf="!loginBool">LogOut</button>
-    <button (click)="regopen(register)" *ngIf="loginBool">Sign Up</button>
+    <button (click)="openlogin(login)" *ngIf="!loginBool">Login</button>
+    <button (click)="goToDashboard()" *ngIf="loginBool">Dashboard</button>
+    <button (click)="logout()" *ngIf="loginBool">LogOut</button>
+    <button (click)="openregister(register)" *ngIf="!loginBool">Sign Up</button>
   </div>
 </div>
 

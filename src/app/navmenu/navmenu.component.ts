@@ -10,6 +10,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbModalConfig, NgbModal]
 })
 export class NavmenuComponent implements OnInit {
+  loginBool: boolean = false;
   menu: any = [
     { id: 0, name: 'Home' },
     { id: 0, name: 'Blog' },
@@ -40,6 +41,7 @@ export class NavmenuComponent implements OnInit {
     private modalService: NgbModal,public router: Router) {}
 
   ngOnInit(): void {
+    this.loginBool=this.isLoggedIn();
     if (window.innerWidth <= 600) {
       this.mobileWidth = true;
       this.menu.push({ id: 4, name: 'User Menu' });
@@ -48,15 +50,28 @@ export class NavmenuComponent implements OnInit {
       this.menu.filter((res: any) => res.id != 4);
     }
   }
+
+  isLoggedIn(){
+    if(localStorage.getItem("token")){
+        return true;
+    }else{
+        return false;
+    }
+  }
   open(page: any) {
     this.modalService.open(page);
   }
+
   home() {
     this.router.navigateByUrl('/home');
   }
+
   menuChange() {
     this.menuBarClick = !this.menuBarClick;
   }
+
+ 
+
   changeView(data: any) {
     if (data.includes('Profile')) {
       this.profileView = 'true';

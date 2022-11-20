@@ -24,9 +24,15 @@ export class AuthService {
 
 //   these functions will be called from the header.component.ts file
   login(data: any) {
-    console.log("login");
+    console.log("Login service");
     console.log(this.BASE_URL);
-    return this.http.post(`${this.BASE_URL}/login?username=` + data.username + '&password=' + data.password, { headers: this.headers });
+    let res = this.http.post(`${this.BASE_URL}/login?username=` + data.username + '&password=' + data.password, { headers: this.headers });
+
+    // let uname = res.data.user.username;
+
+    // localStorage.setItem("username",uname);
+
+    return res; 
   }
 
   register(data: any) {
