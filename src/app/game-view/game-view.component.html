@@ -27,20 +27,21 @@
   </nav>
   <div class="top-container">
     <div class="left-pane">
-      <strong> <h2>Stats</h2></strong>
-      <ul>
+      <strong> <h2>Bets</h2></strong>
+      <ul class="left-pane-list">
         <li>Coffee</li>
         <li>Tea</li>
         <li>Milk</li>
       </ul>
     </div>
     <div class="middle-iframe">
+        <h2 class="user-balance"><strong>Balance: 100 eur</strong></h2>
       <iframe id="game-frame" [src]="url"></iframe>
     </div>
 
     <div class="right-pane">
       <strong><h2>Options</h2></strong>
-      <ul>
+      <ul class="right-pane-list">
         <li>Coffee</li>
         <li>Tea</li>
         <li>Milk</li>
@@ -55,6 +56,7 @@
     </div>
   </div>
   <div class="bottom-container">
+    <h2><strong>Matches</strong></h2>
     <table class="table table-hover">
       <thead>
         <tr>

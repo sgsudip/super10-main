@@ -1,5 +1,6 @@
 .screen {
   height: auto;
+  color: white;
 }
 
 .top-container {
@@ -24,6 +25,7 @@
 .middle-iframe {
   flex: 3;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   scrollbar-width: 0 !important;
   padding-top: 30px;
@@ -79,9 +81,20 @@ ul {
 }
 
 ul > li {
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   padding: 10px;
 }
+
+.left-pane-list > li, .right-pane-list >li {
+    background-color: #1f2235;
+  border: 2px solid #2ecc71;
+  border-radius: 10px;
+}
+
+/* .right-pane-list:last-child{
+    margin-bottom: 10px;
+} */
 
 .bottom-container {
   padding: 20px;
@@ -95,12 +108,12 @@ table {
   border-radius: 10px !important;
 }
 
-thead{
-    background-color: #2eec71;
+thead {
+  background-color: #2eec71;
 }
 
-tbody{
-    background-color: #1f2235;
+tbody {
+  background-color: #1f2235;
 }
 
 @media only screen and (max-width: 400px) {
