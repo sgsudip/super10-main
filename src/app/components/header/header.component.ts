@@ -146,11 +146,11 @@ export class HeaderComponent implements OnInit {
       (err) => {
         this.spinner.hide();
         this.modalService.dismissAll();
-        this.snackBar.open(`Please enter Valid data`, '', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-        });
+        // this.snackBar.open(`Please enter Valid data`, '', {
+        //   duration: 3000,
+        //   verticalPosition: 'top',
+        //   horizontalPosition: 'center',
+        // });
       }
     );
     // login function ended
@@ -189,24 +189,26 @@ export class HeaderComponent implements OnInit {
         }
 
         if (res.code == 401 || res.code != 200) {
-          this.snackBar.open(`Please enter Valid data`, '', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center',
-          });
+            console.log(res.code);
+        //   this.snackBar.open(`Please enter Valid data`, '', {
+        //     duration: 3000,
+        //     verticalPosition: 'top',
+        //     horizontalPosition: 'center',
+        //   });
         } else {
           if (res.code == 200) {
             // if message contains error
             if (res.message.error) {
-              this.snackBar.open(
-                `Please Enter Valid and Unique Credentials`,
-                '',
-                {
-                  duration: 3000,
-                  verticalPosition: 'top',
-                  horizontalPosition: 'center',
-                }
-              );
+                console.log(res.message.error);
+            //   this.snackBar.open(
+            //     `Please Enter Valid and Unique Credentials`,
+            //     '',
+            //     {
+            //       duration: 3000,
+            //       verticalPosition: 'top',
+            //       horizontalPosition: 'center',
+            //     }
+            //   );
             } else {
               console.log('registration successfull');
               this.snackBar.open(`Registered SuccessFully`, '', {
@@ -222,11 +224,11 @@ export class HeaderComponent implements OnInit {
       (err) => {
         this.spinner.hide();
         this.modalService.dismissAll();
-        this.snackBar.open(`Please enter Valid data`, '', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-        });
+        // this.snackBar.open(`Please enter Valid data`, '', {
+        //   duration: 3000,
+        //   verticalPosition: 'top',
+        //   horizontalPosition: 'center',
+        // });
       }
     );
   }
