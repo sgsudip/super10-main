@@ -12,6 +12,10 @@ import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.compone
 import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { AboutComponent } from './pages/about/about.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { AffiliateComponent } from './pages/affiliate/affiliate.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [{
 	path: '',
@@ -48,6 +52,22 @@ const routes: Routes = [{
 {
 	path: 'promotion/promotioninfo',
 	component: PromotioninfoComponent
+},
+{
+    path: 'about',
+    component: AboutComponent
+},
+{
+    path: 'blog',
+    component: BlogComponent
+},
+{
+    path: 'affiliate',
+    component: AffiliateComponent
+},
+{
+    path: 'contact',
+    component: ContactComponent
 },
 {
     path: 'privacy',

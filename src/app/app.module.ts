@@ -29,6 +29,10 @@ import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.compone
 import { PasswordresetComponent } from './pages/passwordreset/passwordreset.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { AboutComponent } from './pages/about/about.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { AffiliateComponent } from './pages/affiliate/affiliate.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
     PasswordresetComponent,
     PagenotfoundComponent,
     TransactionsComponent,
+    AboutComponent,
+    BlogComponent,
+    AffiliateComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

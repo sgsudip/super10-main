@@ -22,7 +22,7 @@ export class GameViewComponent implements OnInit {
   }
 
   testValidate(){
-    console.log("testvalidate function");
+    console.log("TestValidate function");
     this.gameapi.testValidate();
   }
 

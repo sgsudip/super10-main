@@ -91,9 +91,11 @@ export class HeaderComponent implements OnInit {
   }
 
   goToDashboard() {
-    console.log('Go to dashboard');
+    // console.log('Go to dashboard');
     this.router.navigateByUrl('/dashboard');
   }
+
+  
 
   home() {
     this.router.navigateByUrl('/home');
@@ -112,16 +114,16 @@ export class HeaderComponent implements OnInit {
         }, 2000);
         // check response code and depending on that redirect to a specific page
         if (res.code == 401 || res.code != 200) {
-          console.log('Here is the response object \n');
+        //   console.log('Here is the response object \n');
           console.log(res);
-          console.log('no success response');
+        //   console.log('no success response');
           this.snackBar.open(`Please enter Valid data`, '', {
             duration: 3000,
             verticalPosition: 'top',
             horizontalPosition: 'center',
           });
         } else {
-          console.log('The response object \n');
+        //   console.log('The response object \n');
           console.log(res);
           // get the accesstoken for the user
           let token = res.data.access_token;
@@ -174,10 +176,11 @@ export class HeaderComponent implements OnInit {
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);
+        this.modalService.dismissAll();
 
         // if the user is created
         if (res.status == 'ok' && res.code == 200) {
-          console.log('Registration successfull');
+        //   console.log('Registration successfull');
           this.snackBar.open(`Registered SuccessFully`, '', {
             duration: 3000,
             verticalPosition: 'top',
@@ -210,7 +213,7 @@ export class HeaderComponent implements OnInit {
             //     }
             //   );
             } else {
-              console.log('registration successfull');
+            //   console.log('Registration successfull');
               this.snackBar.open(`Registered SuccessFully`, '', {
                 duration: 3000,
                 verticalPosition: 'top',
@@ -242,7 +245,7 @@ export class HeaderComponent implements OnInit {
     this.auth.sendresetmail(postData).subscribe((res: any) => {
       console.log(res);
       if (res.success) {
-        console.log('Email sent');
+        // console.log('Email sent');
         this.modalService.dismissAll();
         this.router.navigateByUrl('home');
       }

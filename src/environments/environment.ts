@@ -4,7 +4,7 @@
 
 export const environment = {
   production: TextTrackCueList,
-  base_url: 'api',
+  base_url: 'http://localhost:8000/api',
   game_stage_url: "https://staging.slotegrator.com/api/index.php/v1"
 };
 

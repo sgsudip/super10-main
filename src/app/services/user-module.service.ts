@@ -17,7 +17,7 @@ export class UserModuleService {
     }
    }
   getDashBoard() {
-    console.log("get dashboard function");
+    console.log("Get dashboard function");
     this.headers=new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}`});
     return this.http.get(`${this.BASE_URL}/user/dashboard`, { headers: this.headers });
   }

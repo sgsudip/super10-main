@@ -31,7 +31,7 @@
       </div>
 
       <ul class="menu-list" *ngIf="!mobileWidth">
-        <li class="menu-list-item c-point" *ngFor="let item of menu">
+        <li class="menu-list-item c-point" *ngFor="let item of menu" (click)="openpage(item)">
           {{ item.name }}
         </li>
       </ul>
@@ -42,7 +42,7 @@
           src="http://localhost:8000/assets/images/avatar.png"
         />
         <div class="dropdown-content">
-          <a *ngFor="let item of profileMenu" (click)="changeView(item.name)">{{
+          <a *ngFor="let item of profileMenu" (click)="openpage(item)">{{
             item.name
           }}</a>
         </div>
@@ -71,7 +71,7 @@
       <div
         *ngFor="let item of menu"
         class="li-block d-flex justify-content-between"
-        (click)="menuRoute(item.name)"
+        (click)="openpage(item)"
       >
         <li class="mob-menu-list hi c-point">{{ item.name }}</li>
         <i *ngIf="item.name == 'User Menu'" class="fa-solid fa-angle-down"></i>

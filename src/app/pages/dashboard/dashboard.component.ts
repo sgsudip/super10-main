@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     this.userService.getDashBoard().subscribe(
       (res) => {
         this.dashData = res;
-
+        console.log(res);
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);
@@ -92,16 +92,17 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  menuStatus(ev: any) {
-    this.currentMenu = ev;
-    if (this.currentMenu.includes('profile')) {
-      this.currentHeader = 'Profile Setting';
-      this.getUser();
-    } else {
-      this.currentHeader = 'Dashboard';
-    }
-  }
+//   menuStatus(ev: any) {
+//     this.currentMenu = ev;
+//     if (this.currentMenu.includes('profile')) {
+//       this.currentHeader = 'Profile Setting';
+//       this.getUser();
+//     } else {
+//       this.currentHeader = 'Dashboard';
+//     }
+//   }
 
+  //   this is being called from menuStatus function
   getUser() {
     this.spinner.show();
     this.userService.getUser().subscribe(

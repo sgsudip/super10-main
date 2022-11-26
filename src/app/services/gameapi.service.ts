@@ -115,7 +115,7 @@ export class GameapiService {
   }
 
   testValidate() {
-    console.log("testvalidate api");
+    console.log("Testvalidate Api");
     // console.log(data);
     // const randomNbr = mt_rand();
     // const uniqId = uniqid(randomNbr, true);
