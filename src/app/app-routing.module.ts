@@ -16,6 +16,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { AffiliateComponent } from './pages/affiliate/affiliate.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DeposithistoryComponent } from './pages/deposithistory/deposithistory.component';
+import { DepositComponent } from './pages/deposit/deposit.component';
 
 const routes: Routes = [{
 	path: '',
@@ -68,6 +70,14 @@ const routes: Routes = [{
 {
     path: 'contact',
     component: ContactComponent
+},
+{
+    path: 'deposit',
+    component: DepositComponent
+},
+{
+    path: 'deposit/history',
+    component: DeposithistoryComponent
 },
 {
     path: 'privacy',

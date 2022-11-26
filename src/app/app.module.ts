@@ -33,6 +33,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { AffiliateComponent } from './pages/affiliate/affiliate.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DeposithistoryComponent } from './pages/deposithistory/deposithistory.component';
+import { DepositComponent } from './pages/deposit/deposit.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     BlogComponent,
     AffiliateComponent,
     ContactComponent,
+    DeposithistoryComponent,
+    DepositComponent,
   ],
   imports: [
     BrowserModule,

@@ -74,11 +74,12 @@ export class DashboardComponent implements OnInit {
           localStorage.clear();
           this.router.navigateByUrl('/home');
         } else {
-          this.snackBar.open(`Server Error`, '', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center',
-          });
+        //   this.snackBar.open(`Server Error`, '', {
+        //     duration: 3000,
+        //     verticalPosition: 'top',
+        //     horizontalPosition: 'center',
+        //   });
+        console.log("SERVER ERROR");
         }
       }
     );
@@ -130,11 +131,12 @@ export class DashboardComponent implements OnInit {
           });
           this.router.navigateByUrl('/home');
         } else {
-          this.snackBar.open(`Server Error`, '', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center',
-          });
+        //   this.snackBar.open(`Server Error`, '', {
+        //     duration: 3000,
+        //     verticalPosition: 'top',
+        //     horizontalPosition: 'center',
+        //   });
+        console.log("SERVER ERROR");
         }
       }
     );
@@ -162,11 +164,12 @@ export class DashboardComponent implements OnInit {
       },
       (err) => {
         this.spinner.hide();
-        this.snackBar.open(`Server Error`, '', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-        });
+        // this.snackBar.open(`Server Error`, '', {
+        //   duration: 3000,
+        //   verticalPosition: 'top',
+        //   horizontalPosition: 'center',
+        // });
+        console.log("SERVER ERROR");
       }
     );
   }

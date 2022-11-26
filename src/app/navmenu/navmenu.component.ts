@@ -58,12 +58,17 @@ export class NavmenuComponent implements OnInit {
         return false;
     }
   }
+
   open(page: any) {
     this.modalService.open(page);
   }
 
   home() {
     this.router.navigateByUrl('/home');
+  }
+
+  goToDashboard(){
+    this.router.navigateByUrl("/dashboard");
   }
 
   menuChange() {

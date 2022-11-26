@@ -1,0 +1,37 @@
+<app-navmenu></app-navmenu>
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h4 class="title mb-0">Deposit Methods</h4>
+        </div>
+    </div>
+    
+</section>
+<section>
+    <div class="container-fluid my-5 careds">
+      <div class="info-content">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-lg-3 col-sm-6 cardList"
+              *ngFor="let item of gatewayList"
+            >
+              <div class="dashboard dash-cards" (click)="goToPayment(item)">
+                <div class="sidecard">
+                  <i class="card-icon fa-solid {{ item.icon }}"></i>
+                </div>
+                <div class="content">
+                  <div>
+                    {{ item.name }}
+                  </div>
+                  <small></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </section>
+<app-footer></app-footer>
