@@ -77,8 +77,8 @@ export class DepositconfirmComponent implements OnInit {
                 horizontalPosition: 'center'
             });
 
-            this.router.navigateByUrl(res.data.gateway_data.redirect_url);
-          
+            // this.router.navigateByUrl(res.data.gateway_data.redirect_url);
+          window.open(res.data.gateway_data.redirect_url,"_blank");
         }else{
             this.snackBar.open("Deposit confirmation unsuccessfull, please try after sometime.",'',{
                 duration: 3000,
