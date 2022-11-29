@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,13 +9,16 @@ import { Router } from '@angular/router';
 })
 export class DeposithistoryComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  private deposit : any = "";
+
+  constructor(public router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    
   }
 
-  goToDeposit(){
-    this.router.navigateByUrl("deposit");
+  goToDepositMethods(){
+    this.router.navigateByUrl("deposit/methods");
   }
 
 }

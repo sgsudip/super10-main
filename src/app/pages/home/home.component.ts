@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 		private sanitize: DomSanitizer) { }
 
 	ngOnInit(): void {
-		console.log('hai')
+		console.log('hi')
 		this.url = this.sanitize.bypassSecurityTrustUrl("https://web.telegram.org/z/");
 		// this.auth.get().subscribe(res=>{
 		// });

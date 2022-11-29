@@ -13,7 +13,7 @@ export class UserModuleService {
   constructor(private http: HttpClient) {
     this.token=localStorage.getItem("token");
     if(this.token){
-     this.token= JSON.parse(this.token)
+     this.token= JSON.parse(this.token).token;
     }
    }
   getDashBoard() {
@@ -29,5 +29,9 @@ export class UserModuleService {
   updateProfile(data:any){
     this.headers=new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}`});
     return this.http.post(`${this.BASE_URL}/user/profile-setting`,data, { headers: this.headers });
+  }
+
+  getDeposits(data: any){
+
   }
 }

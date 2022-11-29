@@ -95,8 +95,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/dashboard');
   }
 
-  
-
   home() {
     this.router.navigateByUrl('/home');
   }
@@ -126,9 +124,12 @@ export class HeaderComponent implements OnInit {
         //   console.log('The response object \n');
           console.log(res);
           // get the accesstoken for the user
+          localStorage.clear();
           let token = res.data.access_token;
           // set the token in localstorage
-          localStorage.setItem('token', JSON.stringify(token));
+          localStorage.setItem('token', JSON.stringify({
+            "token": token
+          }));
         //   set username
           let uname = res.data.user.username;
           localStorage.setItem('username', uname);

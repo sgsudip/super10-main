@@ -35,6 +35,8 @@ import { AffiliateComponent } from './pages/affiliate/affiliate.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { DeposithistoryComponent } from './pages/deposithistory/deposithistory.component';
 import { DepositComponent } from './pages/deposit/deposit.component';
+import { GatewayComponent } from './pages/gateway/gateway.component';
+import { DepositconfirmComponent } from './pages/depositconfirm/depositconfirm.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { DepositComponent } from './pages/deposit/deposit.component';
     ContactComponent,
     DeposithistoryComponent,
     DepositComponent,
+    GatewayComponent,
+    DepositconfirmComponent,
   ],
   imports: [
     BrowserModule,
