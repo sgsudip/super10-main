@@ -68,8 +68,26 @@ export class DepositconfirmComponent implements OnInit {
     // formVal = { ...formVal, method_code: this.tID };
     this.payService.confirmDeposit(this.tID).subscribe(
       (res: any) => {
-        console.log(res);
-       this.router.navigate(['/dashboard']);
+        if(res.data.gateway_data.redirect){
+            this.snackBar.open("Successfully confirmed deposit, Please pay on coinbase page",'',{
+                duration: 3000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center'
+            });
+            
+            this.router.navigateByUrl(res.data.gateway_data.redirect_url);
+          
+        }else{
+            this.snackBar.open("Deposit confirmation unsuccessfull, please try after sometime.",'',{
+                duration: 3000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center'
+            })
+            this.router.navigate(['/dashboard']);
+        }
+        
+        // console.log(res);
+        //    this.router.navigate(['/dashboard']);
       },
       (err: any) => {
         this.spinner.hide();
